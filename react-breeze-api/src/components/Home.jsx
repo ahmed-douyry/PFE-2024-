@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import useAuthcontext from '../context/Authcontext'
+import Slider from './Slider';
 
 export default function Home() {
   const {user,getuser} = useAuthcontext()
@@ -9,8 +10,11 @@ export default function Home() {
     }
   },[])
   return (
+    <>
     <div>
       {user?.name}
     </div>
+    <Slider />
+    </>
   )
 }

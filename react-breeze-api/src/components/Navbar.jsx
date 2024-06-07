@@ -1,21 +1,8 @@
 import { Fragment, useState } from 'react';
-import {
-  Dialog,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-  Tab,
-  TabGroup,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Transition,
-  TransitionChild,
-} from '@headlessui/react';
+import { Dialog, DialogPanel, Popover, PopoverButton, PopoverGroup, PopoverPanel, Tab, TabGroup, TabList, TabPanel, TabPanels, Transition, TransitionChild } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
+import useAuthcontext from '../context/Authcontext';
 
 const navigation = {
   categories: [
@@ -49,12 +36,43 @@ const navigation = {
         },
         {
           id: 'brands',
-          name: 'Club Parascolaire',
+          name: 'Club Parascolaire ',
           items: [
             { name: 'Club Culturel', href: '#' },
             { name: 'Club Sportif', href: '#' },
             { name: 'Club Innovation', href: '#' },
             { name: 'Club Social', href: '#' },
+          ],
+        },
+      ],
+    },
+    {
+      id: 'men',
+      name: 'Départements',
+      featured: [
+        {
+          name: 'Digitalisation',
+          href: '#',
+          imageSrc: 'https://www.sdtconsulting.ma/static/uploads/2022/07/le-developpement-du-digital-au-Maroc-a-horizon-2025.jpg',
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
+        },
+        {
+          name: "L'Esprit-guide",
+          href: '#',
+          imageSrc: 'https://osbt.ma/storage/2023/07/DSC00847-scaled.jpg',
+          imageAlt: 'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
+        },
+      ],
+      sections: [
+        {
+          id: 'clothing',
+          name: 'Filiéres',
+          items: [
+            { name: 'Développement Digital (TS)', href: '#' },
+            { name: 'Infrastructure Digitale (TS)', href: '#' },
+            { name: 'Gestion des entreprises (TS)', href: '#' },
+            { name: 'Assistante Administrative (T)', href: '#' },
+            { name: 'Bac professionnel (T)', href: '#' },
           ],
         },
       ],
@@ -72,6 +90,7 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { user, logout } = useAuthcontext();
 
   function currYear() {
     var year = new Date().getFullYear();
@@ -159,11 +178,7 @@ export default function Navbar() {
                             <p id={`${category.id}-${section.id}-heading-mobile`} className="font-medium text-gray-900">
                               {section.name}
                             </p>
-                            <ul
-                              role="list"
-                              aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                              className="mt-6 flex flex-col space-y-6"
-                            >
+                            <ul role="list" aria-labelledby={`${category.id}-${section.id}-heading-mobile`} className="mt-6 flex flex-col space-y-6">
                               {section.items.map((item) => (
                                 <li key={item.name} className="flow-root">
                                   <a href={item.href} className="-m-2 block p-2 text-gray-500">
@@ -188,29 +203,33 @@ export default function Navbar() {
                     </div>
                   ))}
                 </div>
+
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                <Link to={'/login'}>
-                <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                      Sign in
-                    </a>
-                  </div>
-                </Link>
-                  <Link to={'/signup'}>
-                  <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                      Create account
-                    </a>
-                  </div>
-                  </Link>
+                  {user ? (
+                    <div className="flow-root">
+                      <button onClick={logout} className="-m-2 block p-2 font-medium text-gray-900">
+                        Logout
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flow-root">
+                        <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
+                          Sign in
+                        </Link>
+                      </div>
+                      <div className="flow-root">
+                        <Link to="/signup" className="-m-2 block p-2 font-medium text-gray-900">
+                          Create account
+                        </Link>
+                      </div>
+                    </>
+                  )}
                 </div>
+
                 <div className="border-t border-gray-200 px-4 py-6">
                   <a href="#" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
-                      alt=""
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
+                    <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt="" className="block h-auto w-5 flex-shrink-0" />
                     <span className="ml-3 block text-base font-medium text-gray-900">CAD</span>
                     <span className="sr-only">, change currency</span>
                   </a>
@@ -243,12 +262,7 @@ export default function Navbar() {
               <div className="ml-4 flex lg:ml-0">
                 <a href="#">
                   <span className="sr-only">Your Company</span>
-                  <h3
-                    style={{ color: 'indigo' }}
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                  >
+                  <h3 style={{ color: 'indigo' }} className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
                     𝓞𝓕𝓟𝓟𝓣
                   </h3>
                 </a>
@@ -290,11 +304,7 @@ export default function Navbar() {
                                       {category.featured.map((item) => (
                                         <div key={item.name} className="group relative text-base sm:text-sm">
                                           <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                            <img
-                                              src={item.imageSrc}
-                                              alt={item.imageAlt}
-                                              className="object-cover object-center"
-                                            />
+                                            <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
                                           </div>
                                           <a href={item.href} className="mt-6 block font-medium text-gray-900">
                                             <span className="absolute inset-0 z-10" aria-hidden="true" />
@@ -312,11 +322,7 @@ export default function Navbar() {
                                           <p id={`${section.name}-heading`} className="font-medium text-gray-900">
                                             {section.name}
                                           </p>
-                                          <ul
-                                            role="list"
-                                            aria-labelledby={`${section.name}-heading`}
-                                            className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                          >
+                                          <ul role="list" aria-labelledby={`${section.name}-heading`} className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
                                             {section.items.map((item) => (
                                               <li key={item.name} className="flex">
                                                 <a href={item.href} className="hover:text-gray-800">
@@ -347,17 +353,21 @@ export default function Navbar() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <Link to={'/login'}>
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </a>
-                  </Link>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <Link to={'/signup'}>
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Create account
-                  </a>
-                  </Link>
+                  {user ? (
+                    <button onClick={logout} className="-m-2 block p-2 font-medium text-gray-900">
+                      Logout
+                    </button>
+                  ) : (
+                    <>
+                      <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
+                        Sign in
+                      </Link>
+                      <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                      <Link to="/signup" className="-m-2 block p-2 font-medium text-gray-900">
+                        Create account
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

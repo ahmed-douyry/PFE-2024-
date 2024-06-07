@@ -81,9 +81,15 @@ export const Authprovider = ({ children }) => {
       console.log(e);
     }
   };
+  const logout=()=>{
+    api.post('/logout').then(()=>{
+      setUser(null)
+      navigate('/login')
+    })
+  }
 
   return (
-    <Authcontext.Provider value={{ user, error, getuser, login, register }}>
+    <Authcontext.Provider value={{ user, error, getuser, login, register ,logout}}>
       {children}
     </Authcontext.Provider>
   );
