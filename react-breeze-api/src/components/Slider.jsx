@@ -11,7 +11,6 @@ const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [showStudentSpace, setShowStudentSpace] = useState(false);
   const slideRef = useRef();
   const intervalRef = useRef();
 
@@ -79,27 +78,8 @@ const Slider = () => {
     startAutoSlide();
   };
 
-  const toggleStudentSpace = () => {
-    setShowStudentSpace(!showStudentSpace);
-  };
-
   return (
-    <div className="relative overflow-hidden w-full h-[300px] z-10">
-      <button
-        onClick={toggleStudentSpace}
-        className="absolute top-0 left-1/2 transform -translate-x-1/2 z-30 bg-blue-500 text-white p-2 mt-4"
-      >
-        Espace Etudiant
-      </button>
-      {showStudentSpace && (
-        <div className="absolute top-12 left-1/2 transform -translate-x-1/2 z-30 bg-white p-4 shadow-lg">
-          <ul>
-            <li>Choice 1</li>
-            <li>Choice 2</li>
-            <li>Choice 3</li>
-          </ul>
-        </div>
-      )}
+    <div className="relative overflow-hidden w-full h-[300px]" style={{zIndex:1}}>
       <div
         className="flex transition-transform duration-500"
         ref={slideRef}
@@ -108,7 +88,11 @@ const Slider = () => {
         onMouseLeave={handleMouseLeave}
       >
         <div className="min-w-full">
-          <img src={images[images.length - 1]} alt={`Slide ${images.length}`} className="w-full h-[300px] object-cover" />
+          <img
+            src={images[images.length - 1]}
+            alt={`Slide ${images.length}`}
+            className="w-full h-[300px] object-cover"
+          />
         </div>
         {images.map((src, index) => (
           <div className="min-w-full" key={index}>
@@ -121,13 +105,17 @@ const Slider = () => {
       </div>
       <button
         onClick={handlePrev}
-        className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 z-20 ${isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'}`}
+        className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 ${
+          isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'
+        }`}
       >
         &lt;
       </button>
       <button
         onClick={handleNext}
-        className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 z-20 ${isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'}`}
+        className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 z-2 ${
+          isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'
+        }`}
       >
         &gt;
       </button>
