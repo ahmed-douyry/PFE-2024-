@@ -5,6 +5,7 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import { Authprovider } from './context/Authcontext.jsx'
+import Slider from './components/Slider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
