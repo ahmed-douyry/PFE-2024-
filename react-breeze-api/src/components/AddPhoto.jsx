@@ -12,7 +12,6 @@ const AddPhoto = () => {
     const loadPhotos = async () => {
         try {
             const response = await api.get('/api/photos');
-            console.log('Photos loaded:', response.data); // Ajout pour le débogage
             setPhotos(response.data);
         } catch (error) {
             console.error('Error loading photos:', error);
@@ -31,7 +30,6 @@ const AddPhoto = () => {
             });
             setFile(null);
             alert('Photo added successfully');
-            // Après l'ajout, recharger la liste des photos
             loadPhotos();
         } catch (error) {
             console.error('Error adding photo:', error);
@@ -42,15 +40,35 @@ const AddPhoto = () => {
         setFile(e.target.files[0]);
     };
 
+    const handleDelete = async (photoId) => {
+      try {
+          await api.delete(`/api/photos/${photoId}`);
+          alert('Photo deleted successfully');
+          loadPhotos();
+      } catch (error) {
+          console.error('Error deleting photo:', error);
+      }
+  };
+
     return (
-        <div>
-            <form onSubmit={handleSubmit} className='container mx-auto'>
-                <input type="file" onChange={handleFileChange} required className='border' />
-                <button type="submit">Add Photo</button>
+        <div className="container mx-auto p-4">
+            <form onSubmit={handleSubmit} className="mb-4 p-4 border border-gray-300 rounded-lg shadow-md">
+                <div className="mb-4">
+                    <input type="file" onChange={handleFileChange} required className="border p-2 w-full" />
+                </div>
+                <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Add Photo</button>
             </form>
-            <div className="photos-container">
-                {photos && photos.map((photo, index) => (
-                    <img key={index} src={photo.url} alt={`Photo ${index}`} />
+            <div className="photos-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {photos && photos.map((photo) => (
+                    <div key={photo.id} className="relative group">
+                        <img src={photo.url} alt={`Photo ${photo.id}`} className="w-full h-auto rounded-lg shadow-md" />
+                        <button
+                            onClick={() => handleDelete(photo.id)}
+                            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                        >
+                            &#x2716;
+                        </button>
+                    </div>
                 ))}
             </div>
         </div>

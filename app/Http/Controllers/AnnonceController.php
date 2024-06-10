@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Annonce;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AnnonceController extends Controller
 {
@@ -73,8 +74,31 @@ class AnnonceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Annonce $annonce)
+    public function destroy($id)
     {
-        //
+        $annonce = Annonce::find($id);
+
+        if (!$annonce) {
+            return response()->json(['error' => 'Photo not found'], 404);
+        }
+
+        // Log pour le débogage
+        \Log::info('Deleting photo:', ['id' => $id, 'url' => $annonce->url]);
+
+        try {
+            // Supprimer le fichier de stockage
+            Storage::disk('public')->delete($annonce->url);
+
+            // Supprimer l'annonce de la base de données
+            $annonce->delete();
+
+            return response()->json(['message' => 'Photo deleted successfully']);
+        } catch (\Exception $e) {
+            // Log de l'exception
+            \Log::error('Error deleting photo:', ['id' => $id, 'error' => $e->getMessage()]);
+
+            return response()->json(['error' => 'Error deleting photo'], 500);
+        }
     }
 }
+

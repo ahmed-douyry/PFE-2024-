@@ -13,13 +13,11 @@ const Slider = () => {
     const fetchImages = async () => {
       try {
         const response = await api.get('/api/photos');
-        console.log('API Response:', response.data); // Check the data received from the API
         setImages(response.data);
       } catch (error) {
         console.error('Error fetching images:', error);
       }
     };
-
     fetchImages();
   }, []);
 
@@ -67,7 +65,6 @@ const Slider = () => {
 
   useEffect(() => {
     if (!isTransitioning) return;
-
     slideRef.current.style.transition = 'transform 0.5s ease-in-out';
     if (currentIndex === images.length) {
       slideRef.current.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -89,7 +86,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="container mx-auto overflow-hidden w-[1080px] h-[500px]" style={{ zIndex: 1 }}>
+    <div className="relative overflow-hidden w-full h-[50vh] lg:h-[60vh] xl:h-[70vh]">
       <div
         className="flex transition-transform duration-500"
         ref={slideRef}
@@ -97,28 +94,21 @@ const Slider = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-       {Array.isArray(images) && images.map((image, index) => (
-  <div className="min-w-full flex items-center justify-center" key={index} >
-    {console.log('Image URL:', image.url)} {/* Check the URL of each image */}
-    <img src={image.url} alt={`Slide ${index}`} className="h-300 max-w-full object-cover" style={{ height: '500px', width: '100%' }} />
-  </div>
-))}
+        {Array.isArray(images) && images.map((image, index) => (
+          <div className="min-w-full flex items-center justify-center" key={index}>
+            <img src={image.url} alt={`Slide ${index}`} className="object-cover w-[1080px] h-[500px]" />
+          </div>
+        ))}
       </div>
-
       <button
         onClick={handlePrev}
-        className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 ${
-          isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'
-        }`}
+        className={`absolute left-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 ${isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'}`}
       >
         &lt;
       </button>
-
       <button
         onClick={handleNext}
-        className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 ${
-          isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'
-        }`}
+        className={`absolute right-0 top-1/2 transform -translate-y-1/2 p-2 rounded-full border-2 ${isHovered ? 'bg-gray-800 text-white border-gray-800' : 'bg-gray-500 text-gray-200 border-gray-500'}`}
       >
         &gt;
       </button>

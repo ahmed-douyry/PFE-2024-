@@ -22,4 +22,11 @@ use App\Http\Controllers\AnnonceController;
 
 Route::get('/photos', [AnnonceController::class, 'index']);
 Route::post('/photos', [AnnonceController::class, 'store']);
+Route::delete('/photos/{id}', [AnnonceController::class, 'destroy']); // Mise à jour ici
+use App\Http\Controllers\AnnouncementController;
 
+Route::get('/announcements', [AnnouncementController::class, 'index']);
+Route::get('/announcements/{id}', [AnnouncementController::class, 'show']);
+Route::post('/announcements', [AnnouncementController::class, 'store']);
+Route::put('/announcements/{id}', [AnnouncementController::class, 'update']);
+Route::delete('/announcements/{id}', [AnnouncementController::class, 'destroy']);

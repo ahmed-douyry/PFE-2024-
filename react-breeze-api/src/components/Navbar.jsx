@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import { Dialog, DialogPanel, Popover, PopoverGroup, PopoverPanel, PopoverButton, Tab, TabGroup, TabList, TabPanel, TabPanels, Transition, TransitionChild } from '@headlessui/react';
+import { Dialog, Transition, Popover, PopoverGroup, PopoverButton, PopoverPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import useAuthcontext from '../context/Authcontext';
@@ -98,7 +98,7 @@ export default function Navbar() {
   }
 
   return (
-    <div className="bg-white " style={{ zIndex: 44, position: 'sticky' }}>
+    <div className="bg-white" style={{ zIndex: 44, position: 'sticky' }}>
       <header className="relative bg-white">
         <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           ISTA BOUZNIKA &copy; {currYear()}
@@ -132,102 +132,106 @@ export default function Navbar() {
               </div>
 
               {/* Flyout menus */}
-              
+              {user && user.role !== 'admin' && (
+                <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-40">
+                  <div className="flex h-full space-x-8">
+                    {navigation.categories.map((category) => (
+                      <Popover key={category.name} className="flex">
+                        {({ open }) => (
+                          <>
+                            <div className="relative flex">
+                              <PopoverButton
+                                className={classNames(
+                                  open ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:text-gray-800',
+                                  'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
+                                )}
+                              >
+                                {category.name}
+                              </PopoverButton>
+                            </div>
+
+                            <Transition
+                              enter="transition ease-out duration-200"
+                              enterFrom="opacity-0"
+                              enterTo="opacity-100"
+                              leave="transition ease-in duration-150"
+                              leaveFrom="opacity-100"
+                              leaveTo="opacity-0"
+                            >
+                              <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500" style={{ zIndex: 50 }}>
+                                <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
+                                <div className="relative bg-white">
+                                  <div className="mx-auto max-w-7xl px-8">
+                                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
+                                      <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                        {category.featured.map((item) => (
+                                          <div key={item.name} className="group relative text-base sm:text-sm">
+                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                              <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
+                                            </div>
+                                            <a href={item.href} className="mt-6 block font-medium text-gray-900">
+                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
+                                              {item.name}
+                                            </a>
+                                            <p aria-hidden="true" className="mt-1">
+                                              Click now
+                                            </p>
+                                          </div>
+                                        ))}
+                                      </div>
+                                      <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
+                                        {category.sections.map((section) => (
+                                          <div key={section.name}>
+                                            <p id={`${section.name}-heading`} className="font-medium text-gray-900">
+                                              {section.name}
+                                            </p>
+                                            <ul role="list" aria-labelledby={`${section.name}-heading`} className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                              {section.items.map((item) => (
+                                                <li key={item.name} className="flex">
+                                                  <a href={item.href} className="hover:text-gray-800">
+                                                    {item.name}
+                                                  </a>
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </PopoverPanel>
+                            </Transition>
+                          </>
+                        )}
+                      </Popover>
+                    ))}
+                    {navigation.pages.map((page) => (
+                      <a key={page.name} href={page.href} className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
+                        {page.name}
+                      </a>
+                    ))}
+                  </div>
+                </PopoverGroup>
+              )}
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-start lg:space-x-6">
                   {user && user.role === 'admin' ? (
                     <>
-                      <Link to="/addannonce" className="text-gray-700 hover:text-gray-900 font-medium mr-6">
+                      <Link to="/addannonce" className="text-gray-700 hover:text-gray-900 font-medium">
                         Add Announcement
                       </Link>
-                      <button onClick={logout} className="text-gray-700 hover:text-gray-900 font-medium">
+                      <Link to='/addcard' className='className="text-gray-700 hover:text-gray-900 font-medium"'>
+                          add card
+                      </Link>
+                      <button onClick={logout} className="text-gray-700 hover:text-gray-900 font-medium ml-4">
                         Logout
                       </button>
+                      
                     </>
                   ) : (
                     <>
-                    <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-40">
-                <div className="flex h-full space-x-8">
-                  {navigation.categories.map((category) => (
-                    <Popover key={category.name} className="flex">
-                      {({ open }) => (
-                        <>
-                          <div className="relative flex">
-                            <PopoverButton
-                              className={classNames(
-                                open ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:text-gray-800',
-                                'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
-                              )}
-                            >
-                              {category.name}
-                            </PopoverButton>
-                          </div>
-
-                          <Transition
-                            enter="transition ease-out duration-200"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition ease-in duration-150"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                          >
-                            <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500" style={{ zIndex: 50 }}>
-                              {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                              <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
-                              <div className="relative bg-white">
-                                <div className="mx-auto max-w-7xl px-8">
-                                  <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                    <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                      {category.featured.map((item) => (
-                                        <div key={item.name} className="group relative text-base sm:text-sm">
-                                          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                            <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
-                                          </div>
-                                          <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                            <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                            {item.name}
-                                          </a>
-                                          <p aria-hidden="true" className="mt-1">
-                                            Click now
-                                          </p>
-                                        </div>
-                                      ))}
-                                    </div>
-                                    <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                      {category.sections.map((section) => (
-                                        <div key={section.name}>
-                                          <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                            {section.name}
-                                          </p>
-                                          <ul role="list" aria-labelledby={`${section.name}-heading`} className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                            {section.items.map((item) => (
-                                              <li key={item.name} className="flex">
-                                                <a href={item.href} className="hover:text-gray-800">
-                                                  {item.name}
-                                                </a>
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </PopoverPanel>
-                          </Transition>
-                        </>
-                      )}
-                    </Popover>
-                  ))}
-                  {navigation.pages.map((page) => (
-                    <a key={page.name} href={page.href} className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
-                      {page.name}
-                    </a>
-                  ))}
-                </div>
-              </PopoverGroup>
                       {user ? (
                         <button onClick={logout} className="-m-2 block p-2 font-medium text-gray-900">
                           Logout
@@ -250,6 +254,106 @@ export default function Navbar() {
             </div>
           </div>
         </nav>
+
+        {/* Mobile menu, show/hide based on menu open state. */}
+        <Transition show={open} as={Fragment}>
+          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+            <Transition.Child
+              as={Fragment}
+              enter="transition-opacity ease-linear duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity ease-linear duration-300"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 z-40 flex">
+              <Transition.Child
+                as={Fragment}
+                enter="transition ease-in-out duration-300 transform"
+                enterFrom="-translate-x-full"
+                enterTo="translate-x-0"
+                leave="transition ease-in-out duration-300 transform"
+                leaveFrom="translate-x-0"
+                leaveTo="-translate-x-full"
+              >
+                <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                  <div className="flex px-4 pt-5 pb-2">
+                    <button
+                      type="button"
+                      className="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                      onClick={() => setOpen(false)}
+                    >
+                      <span className="sr-only">Close menu</span>
+                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  {/* Links */}
+                  <div className="space-y-6 px-4 py-6">
+                    {navigation.categories.map((category) => (
+                      <div key={category.name} className="flow-root">
+                        <Popover>
+                          {({ open }) => (
+                            <>
+                              <div className="flex items-center justify-between">
+                                <PopoverButton className="w-full flex items-center justify-between text-gray-700 hover:text-gray-800 font-medium">
+                                  {category.name}
+                                  <span className="ml-1 inline-flex items-center justify-center h-5 w-5">
+                                    <svg
+                                      className={classNames(
+                                        open ? '-rotate-180' : 'rotate-0',
+                                        'h-5 w-5 transform transition-transform duration-200 ease-out'
+                                      )}
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                  </span>
+                                </PopoverButton>
+                              </div>
+                              <Transition
+                                enter="transition ease-out duration-200"
+                                enterFrom="opacity-0"
+                                enterTo="opacity-100"
+                                leave="transition ease-in duration-150"
+                                leaveFrom="opacity-100"
+                                leaveTo="opacity-0"
+                              >
+                                <PopoverPanel className="mt-4 space-y-6">
+                                  {category.sections.map((section) => (
+                                    <div key={section.name}>
+                                      <p className="font-medium text-gray-900">{section.name}</p>
+                                      <ul role="list" className="mt-4 space-y-4">
+                                        {section.items.map((item) => (
+                                          <li key={item.name} className="flex">
+                                            <a href={item.href} className="hover:text-gray-800">
+                                              {item.name}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  ))}
+                                </PopoverPanel>
+                              </Transition>
+                            </>
+                          )}
+                        </Popover>
+                      </div>
+                    ))}
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition>
       </header>
     </div>
   );

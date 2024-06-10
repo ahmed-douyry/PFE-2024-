@@ -8,6 +8,9 @@ import Signup from './components/Signup'
 import Home from './components/Home'
 import Slider from './components/Slider'
 import AddPhoto from './components/AddPhoto'
+import ParentCard from './components/Cards'
+import AnnouncementDetails from './components/AnnouncementDetails'
+import AddAnnouncement from './components/AddAnnouncement'
 
 function App() {
 
@@ -21,6 +24,9 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path="/"  element={<ParentCard/>} />
+          <Route path="/addcard"  element={<AddAnnouncement/>} />
+            <Route path="/details/:id" element={<AnnouncementDetails />} />
       </Routes>
     </>
   )
