@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy":"http://localhost:5173/",
+  "proxy": "http://localhost:5173/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -14,6 +14,7 @@
     "@headlessui/react": "^2.0.4",
     "@heroicons/react": "^2.1.3",
     "axios": "^1.7.2",
+    "bootstrap-icons": "^1.11.3",
     "cors": "^2.8.5",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",

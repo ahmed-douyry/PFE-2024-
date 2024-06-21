@@ -86,7 +86,7 @@ const Slider = () => {
   };
 
   return (
-    <div className="relative overflow-hidden w-full h-[50vh] lg:h-[60vh] xl:h-[70vh]">
+    <div className="relative mt-5 overflow-hidden w-full h-[50vh] lg:h-[60vh] xl:h-[70vh] ">
       <div
         className="flex transition-transform duration-500"
         ref={slideRef}

@@ -25,9 +25,7 @@ export default function AnnouncementDetails() {
     const doc = new jsPDF();
     doc.text(`Title: ${announcement.title}`, 10, 10);
     doc.text(`Description: ${announcement.description}`, 10, 20);
-
-    // Check if image data is available
-    if (announcement.image_url) {
+   if (announcement.image_url) {
       const base64data = announcement.image_url;
       doc.addImage(base64data, 'JPEG', 10, 30, 180, 160); 
     doc.save('announcement-details.pdf');

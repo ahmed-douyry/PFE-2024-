@@ -1,92 +1,8 @@
 import React, { Fragment, useState } from 'react';
-import { Dialog, Transition, Popover, PopoverGroup, PopoverButton, PopoverPanel } from '@headlessui/react';
+import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Link } from 'react-router-dom';
 import useAuthcontext from '../context/Authcontext';
-
-const navigation = {
-  categories: [
-    {
-      id: 'women',
-      name: 'Espace Étudiants',
-      featured: [
-        {
-          name: 'Club Parascolaire',
-          href: '#',
-          imageSrc: 'https://mir-s3-cdn-cf.behance.net/projects/404/545b4261074903.Y3JvcCwxODkwLDE0NzgsNDkxLDM0Ng.jpg',
-          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.',
-        },
-        {
-          name: 'Basic Tees',
-          href: '#',
-          imageSrc: 'https://mir-s3-cdn-cf.behance.net/projects/404/21cdcb150706351.Y3JvcCwxODgxLDE0NzIsMjA5LDA.png',
-          imageAlt: 'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.',
-        },
-      ],
-      sections: [
-        {
-          id: 'accessories',
-          name: 'FPA',
-          items: [
-            { name: 'Note FPA', href: '#' },
-            { name: "Fiche d'appréciation", href: '#' },
-            { name: 'Contrat de stage', href: '#' },
-            { name: 'Assurance', href: '#' },
-          ],
-        },
-        {
-          id: 'brands',
-          name: 'Club Parascolaire ',
-          items: [
-            { name: 'Club Culturel', href: '#' },
-            { name: 'Club Sportif', href: '#' },
-            { name: 'Club Innovation', href: '#' },
-            { name: 'Club Social', href: '#' },
-          ],
-        },
-      ],
-    },
-    {
-      id: 'men',
-      name: 'Départements',
-      featured: [
-        {
-          name: 'Digitalisation',
-          href: '#',
-          imageSrc: 'https://www.sdtconsulting.ma/static/uploads/2022/07/le-developpement-du-digital-au-Maroc-a-horizon-2025.jpg',
-          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.',
-        },
-        {
-          name: "L'Esprit-guide",
-          href: '#',
-          imageSrc: 'https://osbt.ma/storage/2023/07/DSC00847-scaled.jpg',
-          imageAlt: 'Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.',
-        },
-      ],
-      sections: [
-        {
-          id: 'clothing',
-          name: 'Filiéres',
-          items: [
-            { name: 'Développement Digital (TS)', href: '#' },
-            { name: 'Infrastructure Digitale (TS)', href: '#' },
-            { name: 'Gestion des entreprises (TS)', href: '#' },
-            { name: 'Assistante Administrative (T)', href: '#' },
-            { name: 'Bac professionnel (T)', href: '#' },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Emploi du temps', href: '#' },
-    { name: 'Formations', href: '#' },
-  ],
-};
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -98,12 +14,12 @@ export default function Navbar() {
   }
 
   return (
-    <div className="bg-white" style={{ zIndex: 44, position: 'sticky' }}>
-      <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-          ISTA BOUZNIKA &copy; {currYear()}
-        </p>
-        <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="bg-white w-full" style={{ zIndex: 44, position: 'sticky', top: 0 }}>
+      <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        ISTA BOUZNIKA &copy; {currYear()}
+      </p>
+      <header className="relative bg-white container mx-auto px-12">
+        <nav aria-label="Top" className="max-w-7xl sm:px-6 lg:px-8 mt-7 text-white bg-indigo-600 rounded-lg">
           <div className="border-b border-gray-200">
             <div className="flex h-16 items-center">
               <button
@@ -111,151 +27,73 @@ export default function Navbar() {
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
                 onClick={() => setOpen(true)}
               >
-                <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
-                  <span className="sr-only">Your Company</span>
-                  <h3
-                    style={{ color: 'indigo' }}
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                  >
+                <Link to="/">
+                  <h3 style={{ color: 'indigo' }} className="h-8 w-auto">
                     𝓞𝓕𝓟𝓟𝓣
                   </h3>
-                </a>
+                </Link>
               </div>
-
-              {/* Flyout menus */}
-              {user && user.role !== 'admin' && (
-                <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch z-40">
-                  <div className="flex h-full space-x-8">
-                    {navigation.categories.map((category) => (
-                      <Popover key={category.name} className="flex">
-                        {({ open }) => (
-                          <>
-                            <div className="relative flex">
-                              <PopoverButton
-                                className={classNames(
-                                  open ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-700 hover:text-gray-800',
-                                  'relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium transition-colors duration-200 ease-out'
-                                )}
-                              >
-                                {category.name}
-                              </PopoverButton>
-                            </div>
-
-                            <Transition
-                              enter="transition ease-out duration-200"
-                              enterFrom="opacity-0"
-                              enterTo="opacity-100"
-                              leave="transition ease-in duration-150"
-                              leaveFrom="opacity-100"
-                              leaveTo="opacity-0"
-                            >
-                              <PopoverPanel className="absolute inset-x-0 top-full text-sm text-gray-500" style={{ zIndex: 50 }}>
-                                <div className="absolute inset-0 top-1/2 bg-white shadow" aria-hidden="true" />
-                                <div className="relative bg-white">
-                                  <div className="mx-auto max-w-7xl px-8">
-                                    <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                      <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                        {category.featured.map((item) => (
-                                          <div key={item.name} className="group relative text-base sm:text-sm">
-                                            <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
-                                              <img src={item.imageSrc} alt={item.imageAlt} className="object-cover object-center" />
-                                            </div>
-                                            <a href={item.href} className="mt-6 block font-medium text-gray-900">
-                                              <span className="absolute inset-0 z-10" aria-hidden="true" />
-                                              {item.name}
-                                            </a>
-                                            <p aria-hidden="true" className="mt-1">
-                                              Click now
-                                            </p>
-                                          </div>
-                                        ))}
-                                      </div>
-                                      <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                        {category.sections.map((section) => (
-                                          <div key={section.name}>
-                                            <p id={`${section.name}-heading`} className="font-medium text-gray-900">
-                                              {section.name}
-                                            </p>
-                                            <ul role="list" aria-labelledby={`${section.name}-heading`} className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                                              {section.items.map((item) => (
-                                                <li key={item.name} className="flex">
-                                                  <a href={item.href} className="hover:text-gray-800">
-                                                    {item.name}
-                                                  </a>
-                                                </li>
-                                              ))}
-                                            </ul>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </PopoverPanel>
-                            </Transition>
-                          </>
-                        )}
-                      </Popover>
-                    ))}
-                    {navigation.pages.map((page) => (
-                      <a key={page.name} href={page.href} className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800">
-                        {page.name}
-                      </a>
-                    ))}
-                  </div>
-                </PopoverGroup>
-              )}
-
+              
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-start lg:space-x-6">
-                  {user && user.role === 'admin' ? (
-                    <>
-                      <Link to="/addannonce" className="text-gray-700 hover:text-gray-900 font-medium">
-                        Add Announcement
-                      </Link>
-                      <Link to='/addcard' className='className="text-gray-700 hover:text-gray-900 font-medium"'>
-                          add card
-                      </Link>
-                      <button onClick={logout} className="text-gray-700 hover:text-gray-900 font-medium ml-4">
-                        Logout
-                      </button>
-                      
-                    </>
-                  ) : (
-                    <>
-                      {user ? (
-                        <button onClick={logout} className="-m-2 block p-2 font-medium text-gray-900">
-                          Logout
-                        </button>
-                      ) : (
-                        <>
-                          <Link to="/login" className="-m-2 block p-2 font-medium text-gray-900">
-                            Sign in
-                          </Link>
-                          <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                          <Link to="/signup" className="-m-2 block p-2 font-medium text-gray-900">
-                            Create account
-                          </Link>
-                        </>
-                      )}
-                    </>
-                  )}
-                </div>
+                {user && user.role === 'admin' && (
+                  <div className="hidden lg:flex lg:space-x-6">
+                    <Link to="/addannonce" className="text-white hover:text-gray-300 font-medium">
+                      Add Announcement
+                    </Link>
+                    <Link to="/addcard" className="text-white hover:text-gray-300 font-medium">
+                      Add Card
+                    </Link>
+                    <Link to="/addgroup" className="text-white hover:text-gray-300 font-medium">
+                      Add Group
+                    </Link>
+                    <button onClick={logout} className="text-white hover:text-gray-300 font-medium ml-4">
+                      Logout
+                    </button>
+                  </div>
+                )}
+                {user && user.role !== 'admin' && (
+  <div className="flex justify-between items-center w-full">
+    <div className="hidden lg:flex justify-start lg:space-x-8 lg:ml-8">
+      <Link to="/emploi" className="text-sm font-medium text-white hover:text-gray-300">
+        Emploi du temps
+      </Link>
+      <Link to="#" className="text-sm font-medium text-white hover:text-gray-300">
+        Formations
+      </Link>
+      <Link to="/espace-etudiant" className="text-sm font-medium text-white hover:text-gray-300">
+        Espace Étudiant
+      </Link>
+      <Link to="/departement" className="text-sm font-medium text-white hover:text-gray-300">
+        Département
+      </Link>
+    </div>
+    <div className="hidden lg:flex lg:space-x-6">
+      <button onClick={logout} className="text-white hover:text-gray-300 font-medium ml-4">
+        Logout
+      </button>
+    </div>
+  </div>
+)}
+                {!user && (
+                  <div className="hidden lg:flex lg:space-x-6">
+                    <Link to="/login" className="text-white hover:text-gray-300 font-medium">
+                      Sign in
+                    </Link>
+                    <Link to="/signup" className="text-white hover:text-gray-300 font-medium">
+                      Create account
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </nav>
-
-        {/* Mobile menu, show/hide based on menu open state. */}
+        {/* Mobile menu */}
         <Transition show={open} as={Fragment}>
           <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
             <Transition.Child
@@ -269,7 +107,6 @@ export default function Navbar() {
             >
               <div className="fixed inset-0 bg-black bg-opacity-25" />
             </Transition.Child>
-
             <div className="fixed inset-0 z-40 flex">
               <Transition.Child
                 as={Fragment}
@@ -280,7 +117,7 @@ export default function Navbar() {
                 leaveFrom="translate-x-0"
                 leaveTo="-translate-x-full"
               >
-                <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+                <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl rounded-lg">
                   <div className="flex px-4 pt-5 pb-2">
                     <button
                       type="button"
@@ -291,63 +128,67 @@ export default function Navbar() {
                       <XMarkIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
-
-                  {/* Links */}
                   <div className="space-y-6 px-4 py-6">
-                    {navigation.categories.map((category) => (
-                      <div key={category.name} className="flow-root">
-                        <Popover>
-                          {({ open }) => (
-                            <>
-                              <div className="flex items-center justify-between">
-                                <PopoverButton className="w-full flex items-center justify-between text-gray-700 hover:text-gray-800 font-medium">
-                                  {category.name}
-                                  <span className="ml-1 inline-flex items-center justify-center h-5 w-5">
-                                    <svg
-                                      className={classNames(
-                                        open ? '-rotate-180' : 'rotate-0',
-                                        'h-5 w-5 transform transition-transform duration-200 ease-out'
-                                      )}
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                    >
-                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                  </span>
-                                </PopoverButton>
-                              </div>
-                              <Transition
-                                enter="transition ease-out duration-200"
-                                enterFrom="opacity-0"
-                                enterTo="opacity-100"
-                                leave="transition ease-in duration-150"
-                                leaveFrom="opacity-100"
-                                leaveTo="opacity-0"
-                              >
-                                <PopoverPanel className="mt-4 space-y-6">
-                                  {category.sections.map((section) => (
-                                    <div key={section.name}>
-                                      <p className="font-medium text-gray-900">{section.name}</p>
-                                      <ul role="list" className="mt-4 space-y-4">
-                                        {section.items.map((item) => (
-                                          <li key={item.name} className="flex">
-                                            <a href={item.href} className="hover:text-gray-800">
-                                              {item.name}
-                                            </a>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  ))}
-                                </PopoverPanel>
-                              </Transition>
-                            </>
-                          )}
-                        </Popover>
-                      </div>
-                    ))}
+                    <Link to="/emploi" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                      Emploi du temps
+                    </Link>
+                    <Link to="#" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                      Formations
+                    </Link>
+                    <Link to="/espace-etudiant" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                      Espace Étudiant
+                    </Link>
+                    <Link to="/departement" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                      Département
+                    </Link>
+                    {user && user.role === 'admin' && (
+                      <>
+                        <Link to="/addannonce" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Add Announcement
+                        </Link>
+                        <Link to="/addcard" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Add Card
+                        </Link>
+                        <Link to="/addgroup" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Add Group
+                        </Link>
+                        <button onClick={logout} className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Logout
+                        </button>
+                      </>
+                    )}
+                    {user && user.role !== 'admin' && (
+                      <>
+                        <button onClick={logout} className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Logout
+                        </button>
+                      </>
+                    )}
+                    {!user && (
+                      <>
+                      <div className="hidden lg:flex justify-start lg:space-x-8 lg:ml-8">
+      <Link to="/emploi" className="text-sm font-medium text-white hover:text-gray-300">
+        Emploi du temps
+      </Link>
+      <Link to="#" className="text-sm font-medium text-white hover:text-gray-300">
+        Formations
+      </Link>
+      <Link to="/espace-etudiant" className="text-sm font-medium text-white hover:text-gray-300">
+        Espace Étudiant
+      </Link>
+      <Link to="/departement" className="text-sm font-medium text-white hover:text-gray-300">
+        Département
+      </Link>
+    </div>
+                        <Link to="/login" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Sign in
+                        </Link>
+                        <Link to="/signup" className="block text-base font-medium text-gray-900 hover:text-gray-700">
+                          Create account
+                        </Link>
+
+                      </>
+                    )}
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -30,3 +30,9 @@ Route::get('/announcements/{id}', [AnnouncementController::class, 'show']);
 Route::post('/announcements', [AnnouncementController::class, 'store']);
 Route::put('/announcements/{id}', [AnnouncementController::class, 'update']);
 Route::delete('/announcements/{id}', [AnnouncementController::class, 'destroy']);
+use App\Http\Controllers\GroupController;
+
+Route::get('/groups', [GroupController::class, 'index']);
+Route::post('/groups', [GroupController::class, 'store']);
+Route::get('/groups/{id}', [GroupController::class, 'show']);
+Route::DELETE('/groups/{id}', [GroupController::class, 'destroy']);

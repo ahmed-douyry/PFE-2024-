@@ -64,7 +64,7 @@ const AddPhoto = () => {
                         <img src={photo.url} alt={`Photo ${photo.id}`} className="w-full h-auto rounded-lg shadow-md" />
                         <button
                             onClick={() => handleDelete(photo.id)}
-                            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full"
                         >
                             &#x2716;
                         </button>
