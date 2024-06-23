@@ -58,36 +58,50 @@ const AddGroup = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <form onSubmit={handleSubmit} className="mb-4 p-4 border border-gray-300 rounded-lg shadow-md">
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">Group Name</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="border p-2 w-full" />
-                </div>
-                <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">Upload PDF</label>
-                    <input type="file" accept="application/pdf" onChange={handleFileChange} className="border p-2 w-full" />
-                </div>
-                <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700">Add Group</button>
-            </form>
-            <div className="groups-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {groups && groups.map((group) => (
-                    <div key={group.id} className="relative group p-4 border border-gray-300 rounded-lg shadow-md">
-                        <h2 className="text-lg font-bold mb-2">{group.name}</h2>
-                        {group.pdf_url && (
-                            <a href={`http://localhost:8000${group.pdf_url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline mb-2 block">
-                                View PDF
-                            </a>
-                        )}
-                        <button
-                            onClick={() => handleDelete(group.id)}
-                            className="absolute top-2 right-2 bg-red-500  text-white p-1 rounded-full"
-                        >
-                            &#x2716;
-                        </button>
-                    </div>
-                ))}
+        <form onSubmit={handleSubmit} className="mb-8 p-6 border border-gray-300 rounded-lg shadow-md bg-white">
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Group Name</label>
+                <input 
+                    type="text" 
+                    value={name} 
+                    onChange={(e) => setName(e.target.value)} 
+                    required 
+                    className="border border-gray-300 p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
             </div>
+            <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">Upload PDF</label>
+                <input 
+                    type="file" 
+                    accept="application/pdf" 
+                    onChange={handleFileChange} 
+                    className="border border-gray-300 p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+            </div>
+            <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">
+                Add Group
+            </button>
+        </form>
+        <div className="groups-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {groups && groups.map((group) => (
+                <div key={group.id} className="relative group p-4 border border-gray-300 rounded-lg shadow-md bg-white hover:shadow-lg transition-shadow duration-300">
+                    <h2 className="text-lg font-bold mb-2">{group.name}</h2>
+                    {group.pdf_url && (
+                        <a href={`http://localhost:8000${group.pdf_url}`} target="_blank" rel="noopener noreferrer" className="text-blue-500 underline mb-2 block">
+                            View PDF
+                        </a>
+                    )}
+                    <button
+                        onClick={() => handleDelete(group.id)}
+                        className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+                    >
+                        &#x2716;
+                    </button>
+                </div>
+            ))}
         </div>
+    </div>
+    
     );
 };
 

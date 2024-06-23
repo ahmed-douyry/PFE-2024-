@@ -1,33 +1,48 @@
 import React, { useEffect } from 'react';
-import useAuthcontext from '../context/Authcontext';
 import Slider from './Slider';
 import ParentCard from './Cards';
+import useAuthContext from '../context/Authcontext';
+import ServicePedagogique from './ServicePedagogique';
+import VideoGrid from './VideoGrid';
+import Dev from './Devloppement';
+import Filieres from './Nosfilieres';
 
 export default function Home() {
-  const { user, getuser } = useAuthcontext();
+  const { user, getUser } = useAuthContext();
 
   useEffect(() => {
     if (!user) {
-      getuser();
+      getUser();
     }
   }, []);
 
   return (
     <>
-      <div className='container mx-auto p-4  '>
-        <h1 className='text-2xl font-bold mb-4'>Welcome, {user?.name}</h1>
+      <div className='container mx-auto p-4'>
+        
         <section className='mb-24'>
-          <h2 className='text-xl font-semibold mb-2'>Slider Section</h2>
           <Slider />
         </section>
         <h1 className="text-2xl tracking-widest uppercase opacity-4 font-bold text-gray-800 mb-4">
-        DERNIÈRES ACTUALITÉS
-      </h1>
-      <hr className="border-1 border-gray-300" />
+          DERNIÈRES ACTUALITÉS
+        </h1>
+        <hr className="border-1 border-gray-300" />
         <section className='mt-12'>
-          <h2 className='text-xl font-semibold mb-2'>Cards Section</h2>
           <ParentCard />
         </section>
+        <section className='mt-12'>
+          <h2 className='text-xl font-semibold mb-2'>Service Pedagogique</h2>
+          <hr className="border-1 border-gray-300" />
+
+          <ServicePedagogique />
+        </section>
+        <section className='mt-12'>
+          <h2 className='text-xl font-semibold mb-2'>Video de formation</h2>
+          <hr className="border-1 border-gray-300" />
+
+          <VideoGrid />
+        </section>
+        <Filieres />
       </div>
     </>
   );

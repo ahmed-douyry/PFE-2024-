@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
-// routes/api.php
 use App\Http\Controllers\AnnonceController;
 
 Route::get('/photos', [AnnonceController::class, 'index']);
@@ -36,3 +35,10 @@ Route::get('/groups', [GroupController::class, 'index']);
 Route::post('/groups', [GroupController::class, 'store']);
 Route::get('/groups/{id}', [GroupController::class, 'show']);
 Route::DELETE('/groups/{id}', [GroupController::class, 'destroy']);
+
+use App\Http\Controllers\PvNoteController;
+
+Route::get('/pv-notes', [PvNoteController::class, 'index']);
+Route::post('/pv-notes', [PvNoteController::class, 'store']);
+Route::get('/pv-notes/{id}', [PvNoteController::class, 'show']);
+Route::delete('/pv-notes/{id}', [PvNoteController::class, 'destroy']);

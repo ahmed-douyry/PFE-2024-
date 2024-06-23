@@ -1,0 +1,215 @@
+[
+    {
+      "id": 1,
+      "desCompelet":"Le tronc commun en Développement Digital est une étape importante pour acquérir les bases nécessaires à l'étude, la conception, la construction, le développement, la mise au point, la maintenance et à l’amélioration des logiciels, des applications et des sites web.Au cours de cette étape, qui dure une année de formation professionnelle, les stagiaires suivent une formation qui a la vocation de répondre à deux types de compétences :- Compétences transversales : Les langues , l'entrepreneuriat, Compétences comportementales et sociales, Culture et techniques avancées du numérique.- Compétences techniques : Acquérir les bases de l'algorithmique, Programmer en Orienté Objet , Développer des sites web statiques, Programmer en JavaScript , Développer des sites web dynamiques.",
+      "image": "https://backend.myway.ac.ma/assets/31E99E30-D060-4291-859F-7B53206EED48",
+      "title": "Développement Digital",
+      "description": "Le tronc commun en Développement Digital est une étape importante pour acquérir les bases nécessaires à l'étude, la conception, la construction, le développement, la mise au point, la maintenance et à l’amélioration des logiciels, des applications et des sites web...",
+      "tags": [
+        { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+        { "text": "Cours du jour", "className": "bg-purple-200" },
+        { "text": "Diplomante", "className": "bg-teal-200" },
+        { "text": "Tronc commun", "className": "bg-blue-200" }
+      ],
+      "children": [
+        {
+          "id": 11,
+          "title": "Développement Digital option Applications Mobiles",
+          "description": "Le développeur Mobile effectue la réalisation et le développement d’une application Mobile ou site Web, en créant des algorithmes qui répondent à différents problèmes de traitement et de création des interfaces...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Développement Digital option Applications RV/RA",
+          "description": "Le Technicien Spécialisé en développement RV/RA développe des solutions innovantes, de nouvelles fonctionnalités dans l’environnement 3D...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Développement Digital option Web Full Stack",
+          "description": "Un technicien spécialisé en Développement digital option Full Stack est un professionnel capable de réaliser des tâches à n'importe quel niveau technique de la pile des différentes couches qui constituent une application informatique ou un site web...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "desCompelet":"Le tronc commun en infrastructure digitale permet aux stagiaires de concevoir, administrer, optimiser, et sécuriser des architectures et infrastructures IT. Au cours de cette étape, qui dure une année de formation professionnelle, les stagiaires suivent une formation qui a la vocation de répondre à deux types de compétences : - compétences transversales :Les langues , l'entrepreneuriat, Compétences comportementales et sociales, Culture et techniques avancées du numérique. - compétences techniques : Comprendre les enjeux d'un système d'information , Concevoir un réseau informatique  , Maîtriser le fonctionnement d'un système d'exploitation  , Gérer une infrastructure virtualisée ,,, etc",
+      "image": "https://backend.myway.ac.ma/assets/31E99E30-D060-4291-859F-7B53206EED48",
+      "title": "Infrastructure Digitale",
+      "description": "Le tronc commun en infrastructure digitale permet aux stagiaires de concevoir, administrer, optimiser, et sécuriser des architectures et infrastructures IT... Au cours de cette étape, qui dure une année de formation professionnelle, les stagiaires suivent...",
+      "tags": [
+        { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+        { "text": "Cours du jour", "className": "bg-purple-200" },
+        { "text": "Diplomante", "className": "bg-teal-200" },
+        { "text": "Tronc commun", "className": "bg-blue-200" }
+      ],
+      "children": [
+        {
+          "id": 11,
+          "title": "Infrastructure Digitale option Cloud Computing",
+          "description": "Après avoir participé à l’analyse des projets clients avec les chefs de projets, le technicien spécialisé en Cloud Computing assiste et répond aux besoins clients conformément aux spécifications techniques...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Infrastructure Digitale option Cyber sécurité",
+          "description": "Le Technicien en cybersécurité analyse la vulnérabilité du système et les risques liés à la sécurité des données pour mettre en place un processus de protection...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Infrastructure Digitale option IOT",
+          "description": "Le Technicien Spécialisé en Infrastructure digitale Option : IoT intervient sur les différentes étapes de conception, de réalisation, de supervision et d’intégration des solutions IoT...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Infrastructure Digitale option Systèmes et Réseaux",
+          "description": "Après avoir participé à l’analyse des projets clients avec les chefs de projets, le technicien spécialisé en Systèmes et Réseaux assiste et répond aux besoins clients conformément aux spécifications techniques...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "desCompelet":"Le tronc commun Gestion des Entreprises donne au stagiaire toutes les compétences nécessaires pour découvrir le monde des métiers de gestion et du commerce, garantir sa polyvalence et in fine faciliter son choix de l'option professionnelle la plus compatible avec son profil.",
+      "image": "https://backend.myway.ac.ma/assets/D9DF9456-46CA-4D75-A583-CC5C6828799F",
+      "title": "Gestion des Entreprises",
+      "description": "Le tronc commun Gestion des Entreprises donne au stagiaire toutes les compétences nécessaires pour découvrir le monde des métiers de gestion et du commerce,garantir sa polyvalence et in fine faciliter son choix de l'option professionnelle la plus compatible ",
+      "tags": [
+        { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+        { "text": "Cours du jour", "className": "bg-purple-200" },
+        { "text": "Diplomante", "className": "bg-teal-200" },
+        { "text": "Tronc commun", "className": "bg-blue-200" }
+      ],
+      "children": [
+        {
+          "id": 11,
+          "title": "Gestion des Entreprises option Comptabilité et Finance",
+          "description": "Le Technicien Spécialisé en Gestion des Entreprises Option Comptabilité et Finance, au sein des services administratifs, comptables et financiers des entreprises, autres organisations, ou des cabinets comptables...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "Gestion des Entreprises option Commerce et Marketing",
+          "description": "Le Technicien Spécialisé en Gestion des Entreprises Option Commerce et Marketing a un rôle moteur dans la pérennité de l’entreprise. Sa mission principale est de porter l’image de l’entreprise et fidéliser ses clients...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Gestion des Entreprises option Office Manager",
+          "description": "Au sein d'une entreprise, le Technicien Spécialisé en Gestion des Entreprises Option Office Manager a pour mission essentielle d'assister le dirigeant de la structure et de le décharger de certaines de ses fonctions...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "Gestion des Entreprises option Ressources Humaines",
+          "description": "Le Technicien Spécialisé en Gestion des Entreprises Option Ressources Humaines contribue à la mise en œuvre de la politique RH. Il est appelé à traiter soit partiellement, soit en totalité les données relatives de la gestion du personnel...",
+          "tags": [
+            { "text": "Technicien Spécialisé", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "desCompelet":"Le tronc commun de la filière Assistant Administratif donne au stagiaire les compétences nécessaires pour découvrir les métiers de gestion et du commerce, garantir sa polyvalence et faciliter son choix de l'option professionnelle la plus compatible avec son profil.",
+      "image": "https://backend.myway.ac.ma/assets/D9DF9456-46CA-4D75-A583-CC5C6828799F",
+      "title": "Assistant Administratif ",
+      "description": "Le tronc commun de la filière Assistant Administratif donne au stagiaire les compétences nécessaires pour découvrir les métiers de gestion et du commerce, garantir sa polyvalence et faciliter son choix de l'option professionnelle la plus compatible avec son profil.",
+      "tags": [
+        { "text": "Technicien ", "className": "bg-gray-200" },
+        { "text": "Cours du jour", "className": "bg-purple-200" },
+        { "text": "Diplomante", "className": "bg-teal-200" },
+        { "text": "Tronc commun", "className": "bg-blue-200" }
+      ],
+      "children": [
+        {
+          "id": 11,
+          "title": "L’Assistant Administratif option Commerce",
+          "description": "L’Assistant Administratif option Commerce intervient dans une démarche commerciale active et qui dispose des compétences professionnelles nécessaires pour exercer les activités suivantes : la prospection, la négociation commerciale, la vente et la fidélisation de la clientèle, l’animation d’une surface de vente et les tâches de la gestion, dans le but de développer les ventes de l’entreprise. Ces activités s’exercent dans toutes les entreprises industrielles, commerciales et de service de toutes tailles afin de mettre à la disposition de la clientèle les produits/services correspondant à sa demande.",
+          "tags": [
+            { "text": "Technicien ", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "L’Assistant Administratif option Comptabilité",
+          "description": "L’Assistant Administratif option Comptabilité dispose des compétences spécifiques lui permettant d’effectuer la tenue des comptabilités, d’assurer la facturation, d’établir la paie ainsi que les déclarations sociales et fiscales courantes , de produire des états de synthèse annuels , d’assurer le suivi des achats ou des ventes et la gestion des commandes à travers l’utilisation des logiciels spécialisés , de participer au contrôle de gestion, d’organiser son travail et d’être en relation avec les différents partenaires de l’entreprise (clients, fournisseurs, personnel, administration…).",
+          "tags": [
+            { "text": "Technicien ", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "Assistant Administratif option Gestionx",
+          "description": "L’Assistant Administratif option Gestion exerce son activité dans les PME/PMI, les grandes entreprises publiques ou privées quels qu’en soient la taille, le secteur d’activité et le secteur économique.Dans l’exercice de son métier, l’assistant administratif option gestion constitue un relais entre son unité et les partenaires internes et externes, il facilite le travail des membres de son unité et il participe à l’organisation pratique de son service.",
+          "tags": [
+            { "text": "Technicien ", "className": "bg-gray-200" },
+            { "text": "Cours du jour", "className": "bg-purple-200" },
+            { "text": "Diplomante", "className": "bg-teal-200" }
+          ]
+        }
+      ]
+    },
+    {
+      "id":5,
+      "desCompelet":"Le Bac Pro permet aux bacheliers de renforcer leur insertion professionnelle, notamment en leur donnant la possibilité d'intégrer le marché de travail après l’obtention du baccalauréat, ou de poursuivre leurs études supérieures (Licence professionnelle, Ecole d’ingénieurs, Ecole de commerce…).",
+      "title": "Bac Pro",
+      "description": "Le Bac Pro permet aux bacheliers de renforcer leur insertion professionnelle, notamment en leur donnant la possibilité d'intégrer le marché de travail après l’obtention du baccalauréat, ou de poursuivre leurs études supérieures (Licence professionnelle, Ecole d’ingénieurs, Ecole de commerce…).",
+      "tags": [
+        { "text": "Technicien", "className": "bg-gray-200" },
+        { "text": "Cours du jour", "className": "bg-purple-200" },
+        { "text": "Diplomante", "className": "bg-teal-200" },
+        { "text": "Tronc commun", "className": "bg-blue-200" }
+      ]
+    }
+  ]
+  
