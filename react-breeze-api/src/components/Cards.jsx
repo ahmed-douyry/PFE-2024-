@@ -7,14 +7,15 @@ export default function ParentCard() {
   const [visibleAnnouncements, setVisibleAnnouncements] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isExpanded, setIsExpanded] = useState(false);
-  const announcementsPerPage = 6;
+  const announcementsPerPage = 3;
 
   useEffect(() => {
     const fetchAnnouncements = async () => {
       try {
         const response = await api.get('/api/announcements');
-        setAnnouncements(response.data);
-        setVisibleAnnouncements(response.data.slice(0, announcementsPerPage));
+        const sortedAnnouncements = response.data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        setAnnouncements(sortedAnnouncements);
+        setVisibleAnnouncements(sortedAnnouncements.slice(0, announcementsPerPage));
       } catch (error) {
         console.error('Error fetching announcements:', error);
       }

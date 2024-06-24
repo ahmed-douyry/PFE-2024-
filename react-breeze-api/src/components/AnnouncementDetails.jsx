@@ -66,14 +66,7 @@ export default function AnnouncementDetails() {
                         <li className="nav-item"><a href="#" className="nav-link text-gray-500">Uncategorized</a></li>
                         <li className="nav-item"><a href="#" className="nav-link text-gray-500">Visites</a></li>
                     </ul>
-                    <h6>Recent Articles</h6>
-                    <div className="border-top pt-3">
-                        <ul className="nav flex-column">
-                            <li className="nav-item"><a href="#" className="nav-link text-gray-500">Article 1</a></li>
-                            <li className="nav-item"><a href="#" className="nav-link text-gray-500">Article 2</a></li>
-                            <li className="nav-item"><a href="#" className="nav-link text-gray-500">Article 3</a></li>
-                        </ul>
-                    </div>
+                    
                 </div>
                 <div className='col-md-9 d-flex justify-content-center'>
                     <img src={announcement.image_url ? `http://localhost:8000${announcement.image_url}` : placeholderImage} alt="Image non trouvée" className='img-fluid rounded-lg shadow-md'/>

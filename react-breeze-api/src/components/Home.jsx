@@ -23,7 +23,7 @@ export default function Home() {
         <section className='mb-24'>
           <Slider />
         </section>
-        <h1 className="text-2xl tracking-widest uppercase opacity-4 font-bold text-gray-800 mb-4">
+        <h1 className="text-2xl tracking-widest uppercase opacity-4 font-bold text-gray-800 ">
           DERNIÈRES ACTUALITÉS
         </h1>
         <hr className="border-1 border-gray-300" />

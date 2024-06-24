@@ -35,7 +35,7 @@ function App() {
           <Route path='/addcard' element={<AddAnnouncement />} />
           <Route path='/formation' element={<Nosformation />} />
           <Route path='/ge' element={<Ge />} />
-          <Route path='/pvliste' element={<PvList />} />
+          <Route path='/pvliste' element={<ProtectedRoute element={<PvList />} />}/>
           <Route path='/dev' element={<Dev />} />
           <Route path='/infra' element={<Infra />} />
           <Route path='/addpv' element={<AddPvNote />} />

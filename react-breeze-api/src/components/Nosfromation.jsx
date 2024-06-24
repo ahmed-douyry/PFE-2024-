@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CardComponent = ({ id,title, description, tags }) => {
   return (
 
-    <div className="max-w-sm rounded overflow-hidden shadow-lg my-4 m-6">
+    <div className="w-[300px] rounded overflow-hidden shadow-lg my-4 m-6">
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{title}</div>
         <p className="text-gray-700 text-base">
@@ -31,63 +31,7 @@ const CardComponent = ({ id,title, description, tags }) => {
 };
 
 const Nosformation = () => {
-  // const cards = [
-  //   {
-  //     id:1,
-  //       title: "Développement Digital",
-  //     description: "Le tronc commun en Développement Digital est une étape importante pour acquérir les bases nécessaires à l'étude, la conception, la construction, le développement, la mise au point,...",
-  //     tags: [
-  //       { text: "Technicien Spécialisé", className: "bg-gray-200" },
-  //       { text: "Cours du jour", className: "bg-purple-200" },
-  //       { text: "Diplomante", className: "bg-teal-200" },
-  //       { text: "Tronc commun", className: "bg-blue-200" },
-  //     ],
-  //   },
-  //   {
-  //       id:2,
-  //       title: "Infrastructure Digitale",
-  //       description: " Le tronc commun en infrastructure digitale permet aux stagiaires de concevoir, administrer, optimiser, et sécuriser des architectures et infrastructures IT.  Au cours de cette étape, qui dure une année de...",
-  //       tags: [
-  //         { text: "Technicien Spécialisé", className: "bg-gray-200" },
-  //         { text: "Cours du jour", className: "bg-purple-200" },
-  //         { text: "Diplomante", className: "bg-teal-200" },
-  //         { text: "Tronc commun", className: "bg-blue-200" },
-  //       ],
-  //     },
-  //     {
-  //       id:3,
-  //       title: "Gestion des Entreprises",
-  //       description: "Le tronc commun Gestion des Entreprises donne au stagiaire toutes les compétences nécessaires pour découvrir le monde des métiers de gestion et du commerce, garantir sa polyvalence et in fine...",
-  //       tags: [
-  //         { text: "Technicien Spécialisé", className: "bg-gray-200" },
-  //         { text: "Cours du jour", className: "bg-purple-200" },
-  //         { text: "Diplomante", className: "bg-teal-200" },
-  //         { text: "Tronc commun", className: "bg-blue-200" },
-  //       ],
-  //     },
-  //     {
-  //       id:4,
-  //       title: "Assistant Administratif",
-  //       description: "Le tronc commun en Développement Digital est une étape importante pour acquérir les bases nécessaires à l'étude, la conception, la construction, le développement, la mise au point,...",
-  //       tags: [
-  //         { text: "Technicien", className: "bg-gray-200" },
-  //         { text: "Cours du jour", className: "bg-purple-200" },
-  //         { text: "Diplomante", className: "bg-teal-200" },
-  //         { text: "Tronc commun", className: "bg-blue-200" },
-  //       ],
-  //     },
-  //     {
-  //       id:5,
-  //       title: "Bac Pro",
-  //       description: "Le Bac Pro permet aux bacheliers de renforcer leur insertion professionnelle, notamment en leur donnant la possibilité d'intégrer le marché de travail après l’obtention du baccalauréat, ou de poursuivre leurs études supérieures (Licence professionnelle, Ecole d’ingénieurs, Ecole de commerce…).",
-  //       tags: [
-  //         { text: "Technicien", className: "bg-gray-200" },
-  //         { text: "Cours du jour", className: "bg-purple-200" },
-  //         { text: "Diplomante", className: "bg-teal-200" },
-  //         { text: "Tronc commun", className: "bg-blue-200" },
-  //       ],
-  //     },
-  // ];
+  
   const [cards, setCards] = useState([]);
 
   useEffect(() => {

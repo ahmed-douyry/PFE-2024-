@@ -53,7 +53,7 @@ export default function Navbar() {
               </div>
               
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:space-x-6">
+                {/* <div className="hidden lg:flex lg:space-x-6">
                   <div 
                     className="relative group" 
                     onMouseEnter={() => handleMouseEnter('technicienSpecialise')} 
@@ -105,17 +105,17 @@ export default function Navbar() {
                     )}
                   </div>
                 </div>
-                
+                 */}
                 {user && user.role === 'admin' && (
                   <div className="hidden lg:flex lg:space-x-6">
                     <Link to="/addannonce" className="text-white hover:text-gray-300 font-medium">
-                      Ajouter un annonce
+                      Ajouter slider photo
                     </Link>
                     <Link to="/addcard" className="text-white hover:text-gray-300 font-medium">
-                      Add Card
+                      ajouter anounce
                     </Link>
                     <Link to="/addgroup" className="text-white hover:text-gray-300 font-medium">
-                      Ajouter un groupe
+                      Ajouter un emploi
                     </Link>
                     <Link to="/addpv" className="text-white hover:text-gray-300 font-medium">
                       Ajouter un pv du note
@@ -156,7 +156,7 @@ export default function Navbar() {
                     <Link to="/formation" className="text-sm font-medium text-white hover:text-gray-300">
                       Formations
                     </Link>
-                    <Link to="/espace-etudiant" className="text-sm font-medium text-white hover:text-gray-300">
+                    <Link to="/pvliste" className="text-sm font-medium text-white hover:text-gray-300">
                       Espace Étudiant
                     </Link>
                     <Link to="/departement" className="text-sm font-medium text-white hover:text-gray-300">
